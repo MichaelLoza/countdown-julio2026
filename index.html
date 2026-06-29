@@ -2,89 +2,89 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Inicio Halo Fest 2026 - Eternal Requiem</title>
+  <title>Halo Fest 2026 - Eternal Requiem</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fuente estilo Halo (ejemplo: Orbitron como sustituto futurista) -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+
   <style>
     html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden; /* elimina scroll */
+      margin: 0; padding: 0; height: 100%; overflow: hidden;
+      font-family: 'Orbitron', sans-serif;
+      background: #000;
     }
     body {
       background-image: url("https://raw.githubusercontent.com/MichaelLoza/countdown-julio2026/main/Master.webp");
-      background-size: cover; /* en PC se cubre toda la pantalla */
+      background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      animation: bg-pan 30s linear infinite;
     }
+    @keyframes bg-pan {
+      from { background-position: center; }
+      to { background-position: center 20px; }
+    }
+
     .overlay {
-      background: rgba(0, 0, 0, 0.5);
-      height: 100vh; /* ocupa toda la pantalla */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;  /* centra verticalmente */
-      align-items: center;
-      text-align: center;
-      padding: 10px;
-      box-sizing: border-box;
+      background: rgba(0,0,0,0.6);
+      height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center; padding: 10px;
     }
-    .halo-title-img {
-      max-width: 1500px;
-      width: 100%;
-      height: auto;
-      margin-bottom: 20px;
+
+    h1 {
+      font-size: 2.5em;
+      color: #00ff9d;
+      text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
+      animation: glow 2s ease-in-out infinite alternate;
     }
-    #countdown { 
-      display: flex; 
-      justify-content: center; 
-      gap: 20px; 
-      flex-wrap: nowrap; /* siempre en una sola fila */
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #0f0; }
+      to { text-shadow: 0 0 20px #0f0, 0 0 40px #0f0; }
+    }
+
+    #countdown {
+      display: flex; justify-content: center; gap: 20px;
+      margin-top: 20px;
     }
     #countdown div {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 15px;
-      border-radius: 10px;
-      min-width: 70px;
-      color: #fff;
+      background: rgba(255,255,255,0.1);
+      padding: 15px; border-radius: 10px;
+      min-width: 70px; color: #fff;
+      box-shadow: 0 0 10px #00ff9d;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
     #countdown span { font-size: 1.8em; display: block; }
     #countdown p { margin: 0; font-size: 0.9em; }
-    #music-control {
-      margin-top: 20px; padding: 8px 16px; font-size: 1em;
-      border: none; border-radius: 5px;
-      background-color: #1db954; color: #fff; cursor: pointer;
-    }
-    #music-control:hover { background-color: #14833b; }
 
-    /* Ajustes para pantallas pequeñas */
+    #music-control {
+      margin-top: 20px; padding: 10px 20px;
+      border: none; border-radius: 5px;
+      background-color: #00ff9d; color: #000;
+      cursor: pointer; font-weight: bold;
+      box-shadow: 0 0 10px #00ff9d;
+      transition: transform 0.2s;
+    }
+    #music-control:hover { transform: scale(1.1); }
+
     @media (max-width: 600px) {
-      .halo-title-img { max-width: 300px; }
-      #countdown { gap: 8px; }
+      #countdown { gap: 8px; flex-wrap: wrap; }
       #countdown div { min-width: 55px; padding: 6px; }
       #countdown span { font-size: 1.2em; }
       #countdown p { font-size: 0.7em; }
-
-      /* Fondo más proporcionado en móvil */
-      body {
-        background-size: contain; /* muestra la imagen completa */
-        background-position: center center; /* centra la imagen completa */
-        background-color: #000; /* relleno negro si sobra espacio */
-      }
-
-      /* Ajuste extra: overlay centrado sin empujar abajo */
-      .overlay {
-        justify-content: center; /* evita que se desplace demasiado */
-        padding-top: 20px; /* espacio superior */
-      }
     }
   </style>
 </head>
 <body>
   <div class="overlay">
-    <!-- Título con tipografía Halo desde FontMeme -->
-    <a href="https://fontmeme.com/es/fuente-de-halo/">
-      <img class="halo-title-img" src="https://fontmeme.com/permalink/260629/ec9ec0a2.png" alt="Halo Fest 2026" border="0">
-    </a>
+    <h1>Halo Fest 2026<br>Eternal Requiem</h1>
 
     <div id="countdown">
       <div><span id="days"></span><p>Días</p></div>
@@ -92,25 +92,24 @@
       <div><span id="minutes"></span><p>Minutos</p></div>
       <div><span id="seconds"></span><p>Segundos</p></div>
     </div>
+
     <button id="music-control">🔊 Activar música</button>
   </div>
 
-  <!-- Música de fondo -->
   <audio id="bg-music" autoplay muted loop>
     <source src="https://raw.githubusercontent.com/MichaelLoza/countdown-julio2026/main/HALOTHEME.mpeg" type="audio/mpeg">
   </audio>
 
   <script>
-    // Fecha objetivo: 4 de julio de 2026 a las 10:00 PM
     const targetDate = new Date("July 4, 2026 22:00:00").getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
       const distance = targetDate - now;
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      const days = Math.floor(distance / (1000*60*60*24));
+      const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+      const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+      const seconds = Math.floor((distance % (1000*60))/1000);
 
       document.getElementById("days").innerText = days;
       document.getElementById("hours").innerText = hours;
@@ -118,7 +117,7 @@
       document.getElementById("seconds").innerText = seconds;
 
       if (distance < 0) {
-        document.getElementById("countdown").innerHTML = "<h2>¡Llegó el Halo Fest 2026!</h2>";
+        document.getElementById("countdown").innerHTML = "<h2>¡Halo Fest 2026 ha comenzado!</h2>";
       }
     }
     setInterval(updateCountdown, 1000);
@@ -126,7 +125,7 @@
     const music = document.getElementById("bg-music");
     const btn = document.getElementById("music-control");
     btn.addEventListener("click", () => {
-      music.muted = false; // quita mute al primer clic
+      music.muted = false;
       if (music.paused) {
         music.play();
         btn.textContent = "🔇 Pausar música";
