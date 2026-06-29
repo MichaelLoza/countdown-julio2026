@@ -5,11 +5,12 @@
   <title>Cuenta regresiva 4 Julio 2026</title>
   <style>
     body {
-  background-image: url("https://drive.google.com/uc?export=download&id=1oDOQG9dtv4JTGFcvhJHU27c6uRO1QmkB");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+      margin: 0;
+      background-image: url("URL_DIRECTA_DE_TU_IMAGEN");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
     .overlay {
       background: rgba(0, 0, 0, 0.5);
       min-height: 100vh;
@@ -18,13 +19,14 @@
       justify-content: center;
       align-items: center;
     }
-    h1 { font-size: 2em; margin-bottom: 20px; }
+    h1 { font-size: 2em; margin-bottom: 20px; color: #fff; }
     #countdown { display: flex; justify-content: center; gap: 20px; }
     #countdown div {
       background: rgba(255, 255, 255, 0.1);
       padding: 20px;
       border-radius: 10px;
       min-width: 80px;
+      color: #fff;
     }
     #countdown span { font-size: 2em; display: block; }
     #countdown p { margin: 0; font-size: 1em; }
@@ -49,9 +51,10 @@
   </div>
 
   <!-- Música de fondo -->
-<audio id="bg-music" controls>
-  <source src="https://drive.google.com/uc?export=download&id=11J2Q0VaZWRYpEDtJ56717rNoiROl_B0W" type="audio/mpeg">
-</audio>
+  <audio id="bg-music" controls>
+    <source src="URL_DIRECTA_DE_TU_AUDIO" type="audio/mpeg">
+  </audio>
+
   <script>
     const targetDate = new Date("July 4, 2026 00:00:00").getTime();
 
