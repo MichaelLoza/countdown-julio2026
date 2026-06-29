@@ -22,6 +22,12 @@
       text-align: center;
       padding: 20px;
     }
+    .halo-title-img {
+      max-width: 500px; /* tamaño máximo en PC */
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
     #countdown { 
       display: flex; 
       justify-content: center; 
@@ -49,7 +55,7 @@
       #countdown div { min-width: 60px; padding: 10px; }
       #countdown span { font-size: 1.5em; }
       body { background-size: contain; background-color: #000; }
-      .overlay img { max-width: 90%; height: auto; }
+      .halo-title-img { max-width: 300px; } /* más pequeño en celular */
     }
   </style>
 </head>
@@ -57,7 +63,7 @@
   <div class="overlay">
     <!-- Título con tipografía Halo desde FontMeme -->
     <a href="https://fontmeme.com/es/fuente-de-halo/">
-      <img src="https://fontmeme.com/permalink/260629/ec9ec0a2.png" alt="Halo Fest 2026" border="0">
+      <img class="halo-title-img" src="https://fontmeme.com/permalink/260629/ec9ec0a2.png" alt="Halo Fest 2026" border="0">
     </a>
 
     <div id="countdown">
