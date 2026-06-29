@@ -22,7 +22,7 @@
       height: 100vh; /* ocupa toda la pantalla */
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: center; /* centra verticalmente */
       align-items: center;
       text-align: center;
       padding: 10px;
@@ -67,8 +67,14 @@
       /* Fondo más proporcionado en móvil */
       body {
         background-size: contain; /* muestra la imagen completa */
-        background-position: top center; /* centra la parte superior */
+        background-position: center center; /* centra la imagen completa */
         background-color: #000; /* relleno negro si sobra espacio */
+      }
+
+      /* Ajuste extra: overlay centrado sin empujar abajo */
+      .overlay {
+        justify-content: flex-start; /* evita que se desplace demasiado */
+        padding-top: 20px; /* espacio superior */
       }
     }
   </style>
