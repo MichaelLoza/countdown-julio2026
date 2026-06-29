@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cuenta regresiva 4 Julio 2026</title>
+  <style>
+    body {
+  background-image: url("https://drive.google.com/uc?export=download&id=1oDOQG9dtv4JTGFcvhJHU27c6uRO1QmkB");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+    .overlay {
+      background: rgba(0, 0, 0, 0.5);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 { font-size: 2em; margin-bottom: 20px; }
+    #countdown { display: flex; justify-content: center; gap: 20px; }
+    #countdown div {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      min-width: 80px;
+    }
+    #countdown span { font-size: 2em; display: block; }
+    #countdown p { margin: 0; font-size: 1em; }
+    #music-control {
+      margin-top: 30px; padding: 10px 20px; font-size: 1em;
+      border: none; border-radius: 5px;
+      background-color: #1db954; color: #fff; cursor: pointer;
+    }
+    #music-control:hover { background-color: #14833b; }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>Cuenta regresiva al 4 de Julio 2026</h1>
+    <div id="countdown">
+      <div><span id="days"></span><p>Días</p></div>
+      <div><span id="hours"></span><p>Horas</p></div>
+      <div><span id="minutes"></span><p>Minutos</p></div>
+      <div><span id="seconds"></span><p>Segundos</p></div>
+    </div>
+    <button id="music-control">🔊 Activar música</button>
+  </div>
+
+  <!-- Música de fondo -->
+<audio id="bg-music" controls>
+  <source src="https://drive.google.com/uc?export=download&id=11J2Q0VaZWRYpEDtJ56717rNoiROl_B0W" type="audio/mpeg">
+</audio>
+  <script>
+    const targetDate = new Date("July 4, 2026 00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+
+      if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "<h2>¡Llegó el 4 de Julio 2026!</h2>";
+      }
+    }
+    setInterval(updateCountdown, 1000);
+
+    const music = document.getElementById("bg-music");
+    const btn = document.getElementById("music-control");
+    btn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        btn.textContent = "🔇 Pausar música";
+      } else {
+        music.pause();
+        btn.textContent = "🔊 Activar música";
+      }
+    });
+  </script>
+</body>
+</html>
