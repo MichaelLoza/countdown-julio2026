@@ -2,7 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Cuenta regresiva 4 Julio 2026</title>
+  <title>Inicio Halo Fest 2026 - Eternal Requiem</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Fuente estilo sci-fi -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -18,9 +21,17 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      text-align: center;
+      padding: 20px;
     }
-    h1 { font-size: 2em; margin-bottom: 20px; color: #fff; }
-    #countdown { display: flex; justify-content: center; gap: 20px; }
+    .halo-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #00ffcc;
+      text-shadow: 2px 2px 8px #000;
+    }
+    #countdown { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
     #countdown div {
       background: rgba(255, 255, 255, 0.1);
       padding: 20px;
@@ -36,11 +47,19 @@
       background-color: #1db954; color: #fff; cursor: pointer;
     }
     #music-control:hover { background-color: #14833b; }
+
+    /* Ajustes para pantallas pequeñas */
+    @media (max-width: 600px) {
+      .halo-title { font-size: 1.5em; }
+      #countdown div { min-width: 60px; padding: 10px; }
+      #countdown span { font-size: 1.5em; }
+      body { background-size: contain; background-color: #000; }
+    }
   </style>
 </head>
 <body>
   <div class="overlay">
-    <h1>Cuenta regresiva al 4 de Julio 2026</h1>
+    <h1 class="halo-title">Inicio Halo Fest 2026 - Eternal Requiem</h1>
     <div id="countdown">
       <div><span id="days"></span><p>Días</p></div>
       <div><span id="hours"></span><p>Horas</p></div>
@@ -53,7 +72,7 @@
   <!-- Música de fondo -->
   <audio id="bg-music" controls>
     <source src="https://raw.githubusercontent.com/MichaelLoza/countdown-julio2026/main/HALOTHEME.mpeg" type="audio/mpeg">
-   </audio>
+  </audio>
 
   <script>
     const targetDate = new Date("July 4, 2026 00:00:00").getTime();
@@ -72,7 +91,7 @@
       document.getElementById("seconds").innerText = seconds;
 
       if (distance < 0) {
-        document.getElementById("countdown").innerHTML = "<h2>¡Llegó el 4 de Julio 2026!</h2>";
+        document.getElementById("countdown").innerHTML = "<h2>¡Llegó el Halo Fest 2026!</h2>";
       }
     }
     setInterval(updateCountdown, 1000);
