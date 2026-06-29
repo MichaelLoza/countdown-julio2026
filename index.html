@@ -13,7 +13,7 @@
     }
     body {
       background-image: url("https://raw.githubusercontent.com/MichaelLoza/countdown-julio2026/main/Master.webp");
-      background-size: cover;
+      background-size: cover; /* en PC se cubre toda la pantalla */
       background-position: center;
       background-repeat: no-repeat;
     }
@@ -29,7 +29,7 @@
       box-sizing: border-box;
     }
     .halo-title-img {
-      max-width: 1500px; /* tamaño máximo en PC */
+      max-width: 500px;
       width: 100%;
       height: auto;
       margin-bottom: 20px;
@@ -63,6 +63,13 @@
       #countdown div { min-width: 55px; padding: 6px; }
       #countdown span { font-size: 1.2em; }
       #countdown p { font-size: 0.7em; }
+
+      /* Fondo más proporcionado en móvil */
+      body {
+        background-size: contain; /* muestra la imagen completa */
+        background-position: top center; /* centra la parte superior */
+        background-color: #000; /* relleno negro si sobra espacio */
+      }
     }
   </style>
 </head>
